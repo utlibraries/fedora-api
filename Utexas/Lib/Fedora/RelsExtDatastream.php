@@ -4,26 +4,25 @@ namespace Utexas\Lib\Fedora;
 
 class RelsExtDatastream extends Datastream
 {
-    private $parentPid = null;
     private $relationships = array();
 
     const VERSION_FORMAT_URI = 'info:fedora/fedora-system:FedoraRELSExt-1.0';
     const VERSION_LABEL = 'RDF Statements about this object';
     const VERSION_MIME_TYPE = 'application/rdf+xml';
 
-    public function __construct($id='RELS-EXT', $controlGroup='X', $state='A', $versionable='true')
+    public function __construct($parentPid, $id='RELS-EXT', $controlGroup='X', $state='A', $versionable='true')
     {
-        parent::__construct($id, $controlGroup, $state, $versionable);
+        parent::__construct($parentPid, $id, $controlGroup, $state, $versionable);
     }
 
     public function addRelationship(
         $predicate,
         $predicateNsUri = 'info:fedora/fedora-system:def/relations-external#',
-        $object) {
+        $objectPid) {
         $this->relationships[] = array(
             'predicate' => $predicate,
             'predicate_ns_uri' => $predicateNsUri,
-            'object' => $object,
+            'object_pid' => $objectPid,
         );
     }
 
@@ -37,7 +36,7 @@ class RelsExtDatastream extends Datastream
                xmlns:myns="http://www.nsdl.org/ontologies/relationships#" />');
 
             $rdfDescription = $rdfXml->addChild('rdf:Description');
-            $rdfDescription->addAttribute('rdf:about', 'info:fedora/' . $parentPid);
+            $rdfDescription->addAttribute('rdf:about', 'info:fedora/' . $this->parentPid);
 
             foreach ($this->relationships as $relationship) {
                 $fedoraRelationship = $rdfDescription->addChild(

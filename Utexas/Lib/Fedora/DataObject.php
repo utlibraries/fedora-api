@@ -19,8 +19,8 @@ class DataObject
         $this->label = $label;
         $this->state = $state;
         $this->version = $version;
-        $this->datastreams[] = new DcDatastream();
-        $this->datastreams[] = new RelsExtDatastream();
+        $this->datastreams[] = new DcDatastream($this->pid);
+        $this->datastreams[] = new RelsExtDatastream($this->pid);
     }
 
     public function addDatastream(Datastream $datastream)

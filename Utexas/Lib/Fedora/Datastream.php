@@ -10,12 +10,15 @@ class Datastream
     public $versionable = null;
     public $versions = array();
 
+    private $parentPid;
+
     const VERSION_FORMAT_URI = null;
     const VERSION_MIME_TYPE = null;
     const VERSION_LABEL = null;
 
-    public function __construct($id, $controlGroup = 'X', $state = 'A', $versionable = 'true')
+    public function __construct($parentPid, $id, $controlGroup = 'X', $state = 'A', $versionable = 'true')
     {
+        $this->parentPid = $parentPid;
         $this->id = strtoupper($id);
         $this->controlGroup = $controlGroup;
         $this->state = $state;

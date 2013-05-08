@@ -11,9 +11,9 @@ class DcDatastream extends Datastream
     const VERSION_MIME_TYPE = 'text/xml';
     const VERSION_LABEL = 'Dublin Core Record';
 
-    public function __construct($id='DC', $controlGroup='X', $state='A', $versionable='true')
+    public function __construct($parentPid, $id='DC', $controlGroup='X', $state='A', $versionable='true')
     {
-        parent::__construct($id, $controlGroup, $state, $versionable);
+        parent::__construct($parentPid, $id, $controlGroup, $state, $versionable);
     }
 
     public function getMetadatum($name)
