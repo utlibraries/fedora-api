@@ -28,7 +28,12 @@ class Datastream
     public function addVersion()
     {
         $nextVersionId = count($this->versions);
-        $this->versions[] = new DatastreamVersion($this->id . '.' . $nextVersionId, static::VERSION_FORMAT_URI, static::VERSION_MIME_TYPE, static::VERSION_LABEL);
+        $this->versions[] = new DatastreamVersion(
+                                $this->id . '.' . $nextVersionId,
+                                static::VERSION_FORMAT_URI,
+                                static::VERSION_MIME_TYPE,
+                                static::VERSION_LABEL
+                            );
     }
 
     public function getAttrs()
