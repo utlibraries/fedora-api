@@ -16,6 +16,15 @@ class Datastream
     const VERSION_MIME_TYPE = null;
     const VERSION_LABEL = null;
 
+    /**
+     * Constructor method.
+     *
+     * @param string $parentPid
+     * @param string $id
+     * @param string $controlGroup
+     * @param string $state
+     * @param string $versionable
+     */
     public function __construct($parentPid, $id, $controlGroup = 'X', $state = 'A', $versionable = 'true')
     {
         $this->parentPid = $parentPid;
@@ -28,6 +37,11 @@ class Datastream
         }
     }
 
+    /**
+     * Add a DatastreamVersion to the Datastream object.
+     *
+     * @return Datastream
+     */
     public function addVersion()
     {
         $nextVersionId = count($this->versions);
@@ -37,8 +51,14 @@ class Datastream
                                 static::VERSION_MIME_TYPE,
                                 static::VERSION_LABEL
                             );
+        return $this;
     }
 
+    /**
+     * Returns object attributes as an array for XML generation.
+     *
+     * @return array
+     */
     public function getAttrs()
     {
         $attrs = array(

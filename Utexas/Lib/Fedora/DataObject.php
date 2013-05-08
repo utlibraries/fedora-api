@@ -13,6 +13,14 @@ class DataObject
     public $version = null;
     private $datastreams = array();
 
+    /**
+     * Constructor method.
+     *
+     * @param string $pid
+     * @param string $label
+     * @param string $state
+     * @param string $version
+     */
     public function __construct($pid, $label, $state = 'A', $version = '1.1')
     {
         $this->pid = $pid;
@@ -23,12 +31,23 @@ class DataObject
         $this->datastreams[] = new RelsExtDatastream($this->pid);
     }
 
+    /**
+     * Add a datastream object to the data object.
+     *
+     * @param Datastream $datastream
+     * @return DataObject
+     */
     public function addDatastream(Datastream $datastream)
     {
         $this->datastreams[] = $datastream;
         return $this;
     }
 
+    /**
+     * Returns object attributes as an array for XML generation.
+     *
+     * @return array
+     */
     public function getAttrs()
     {
         $attrs = array(
@@ -37,6 +56,11 @@ class DataObject
         );
     }
 
+    /**
+     * Generate FOXML from DataObject.
+     *
+     * @return string
+     */
     public function asXml()
     {
         $dataObjectXml = new \SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>

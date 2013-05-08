@@ -10,11 +10,28 @@ class RelsExtDatastream extends Datastream
     const VERSION_LABEL = 'RDF Statements about this object';
     const VERSION_MIME_TYPE = 'application/rdf+xml';
 
+    /**
+     * Constructor method.
+     *
+     * @param string $parentPid
+     * @param string $id
+     * @param string $controlGroup
+     * @param string $state
+     * @param string $versionable
+     */
     public function __construct($parentPid, $id='RELS-EXT', $controlGroup='X', $state='A', $versionable='true')
     {
         parent::__construct($parentPid, $id, $controlGroup, $state, $versionable);
     }
 
+    /**
+     * Add an RDF relationship to the RELS-EXT datastream.
+     *
+     * @param string $predicate
+     * @param string $predicateNsUri
+     * @param string $objectPid
+     * @return RelsExtDatastream
+     */
     public function addRelationship(
         $predicate,
         $predicateNsUri = 'info:fedora/fedora-system:def/relations-external#',
@@ -24,8 +41,14 @@ class RelsExtDatastream extends Datastream
             'predicate_ns_uri' => $predicateNsUri,
             'object_pid' => $objectPid,
         );
+        return $this;
     }
 
+    /**
+     * Get the XML representation of the RDF relationships.
+     *
+     * @return string
+     */
     public function getRdfXml()
     {
         if (count($this->relationships) > 0) {

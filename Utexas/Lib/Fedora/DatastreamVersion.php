@@ -12,6 +12,14 @@ class DatastreamVersion
     public $mimeType = null;
     public $xmlContent = null;
 
+    /**
+     * Constructor method.
+     *
+     * @param string $id
+     * @param string $formatUri
+     * @param string $mimeType
+     * @param string $label
+     */
     public function __construct($id, $formatUri, $mimeType, $label)
     {
         $this->id = $id;
@@ -26,6 +34,11 @@ class DatastreamVersion
         }
     }
 
+    /**
+     * Returns object attributes as an array for XML generation.
+     *
+     * @return array
+     */
     public function getAttrs()
     {
         $attrs = array(
