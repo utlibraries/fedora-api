@@ -45,7 +45,7 @@ class RelsExtDatastream extends Datastream
                                           $relationship['predicate_ns_uri']);
                 $fedoraRelationship->addAttribute(
                     'rdf:resource',
-                    $relationship['object'],
+                    $relationship['object_pid'],
                     'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
                 );
             }
