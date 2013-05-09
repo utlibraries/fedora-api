@@ -1,6 +1,6 @@
 <?php
 
-namespace Utexas\Lib\Fedora;
+namespace Edu\Utexas\Lib\Fedora\Foxml;
 
 class Datastream
 {
