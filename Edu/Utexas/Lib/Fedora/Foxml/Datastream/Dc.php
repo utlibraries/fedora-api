@@ -1,8 +1,8 @@
 <?php
 
-namespace Edu\Utexas\Lib\Fedora\Foxml;
+namespace Edu\Utexas\Lib\Fedora\Foxml\Datastream;
 
-class DcDatastream extends Datastream
+class Dc extends InternalXml
 {
     public $metadata = array();
     public $xmlContent = null;

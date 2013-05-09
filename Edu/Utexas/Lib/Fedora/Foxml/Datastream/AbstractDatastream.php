@@ -1,8 +1,8 @@
 <?php
 
-namespace Edu\Utexas\Lib\Fedora\Foxml;
+namespace Edu\Utexas\Lib\Fedora\Foxml\Datastream;
 
-class Datastream
+abstract class AbstractDatastream
 {
     public $controlGroup = null;
     public $id = null;
